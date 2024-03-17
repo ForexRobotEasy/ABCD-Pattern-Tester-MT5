@@ -1,0 +1,68 @@
+
+//+------------------------------------------------------------------+
+//|                                                     ABCD Pattern Tester MT5                    |
+//|                                 Copyright © 2021 Forex Robot Easy Team                        |
+//|                                               https://forexroboteasy.com                   |
+//+------------------------------------------------------------------+
+
+//+------------------------------------------------------------------+
+//|                        Global Variables                                           |
+//+------------------------------------------------------------------+
+string[] symbols;
+int[] timeframes;
+int totalSymbols;
+int totalTimeframes;
+
+//+------------------------------------------------------------------+
+//|                        Initialization Function                                      |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+   // Initialize symbols and timeframes
+   symbols = SymbolsTotal();
+   timeframes = {PERIOD_M1, PERIOD_M5, PERIOD_M15, PERIOD_H1, PERIOD_H4, PERIOD_D1, PERIOD_W1, PERIOD_MN1};
+   totalSymbols = ArraySize(symbols);
+   totalTimeframes = ArraySize(timeframes);
+   
+   return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//|                        Main Execution Function                                   |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+   // Loop through all symbols and timeframes
+   for(int i=0; i<totalSymbols; i++)
+   {
+      for(int j=0; j<totalTimeframes; j++)
+      {
+         string symbol = symbols[i];
+         int timeframe = timeframes[j];
+         
+         // Apply ABCD pattern tester logic here for the current symbol and timeframe
+         // ...
+         
+         // Print the results
+         Print('ABCD pattern found on symbol ', symbol, ' and timeframe ', PeriodToString(timeframe));
+      }
+   }
+   
+   // Perform one-click trading functionality here
+   // ...
+}
+
+//+------------------------------------------------------------------+
+//|                        Deinitialization Function                                   |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+   // Cleanup and deinitialize
+   // ...
+}
+
+//+------------------------------------------------------------------+
+//|                        Additional Functions                                         |
+//+------------------------------------------------------------------+
+// Add additional functions here to aid in ABCD pattern testing, trading, and error handling
+
